@@ -13,7 +13,7 @@ apache_vhosts:
   # Additional properties:
   # 'serveradmin, serveralias, allow_override, options, extra_parameters'.
   - servername: "k3s-haproxy-10-104-100-170.cobbler.lan"
-    documentroot: "/var/www/html/facileManager"
+    documentroot: "/var/www/html/facilemanager"
 
 apache_allow_override: "All"
 apache_options: "-Indexes +FollowSymLinks"
