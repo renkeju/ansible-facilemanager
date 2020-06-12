@@ -1,0 +1,15 @@
+---
+
+__apache_user: apache
+__apache_group: apache
+__apache_service_name: httpd
+
+# Software to be installed
+__dependent_packages:
+  - git
+  - bind 
+  - bind-utils 
+  - bind-devel 
+  - bind-libs 
+  - bind-chroot
+  - dhcp

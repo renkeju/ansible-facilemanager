@@ -1,0 +1,33 @@
+---
+# tasks file for ansible-role-facilemanager
+
+- name: Include OS-specific variables.
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: install dependent packages
+  package:
+    name: "{{ __dependent_packages }}"
+    state: present 
+
+- name: git clone facilemanager repository and switch branches "{{ facileManager_version }}"
+  git:
+    repo: 'https://github.com/WillyXJ/facileManager.git'
+    dest: /opt/facileManager
+    version: "{{ facileManager_version }}"
+
+- name: Copy the facileManager server directory
+  copy:
+    src: /opt/facileManager/server/
+    dest: "/var/www/html/facileManager"
+    owner: "{{ __apache_user }}"
+    group: "{{ __apache_group }}"
+    remote_src: yes
+    force: no
+
+- name: Copy the facileManager client directory
+  copy:
+    src: /opt/facileManager/client/facileManager
+    dest: "/usr/local/"
+    remote_src: yes
+    force: no
+

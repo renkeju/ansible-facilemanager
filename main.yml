@@ -1,0 +1,12 @@
+---
+
+- name: facileManager
+  hosts: fm
+  gather_facts: true
+  become: true
+  roles:
+    - { role: ansible-role-mariadb }
+    - { role: ansible-role-apache }
+    - { role: ansible-role-php }
+    - { role: ansible-role-php-mysql }
+    - { role: ansible-role-facilemanager }

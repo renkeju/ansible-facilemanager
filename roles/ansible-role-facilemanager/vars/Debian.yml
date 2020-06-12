@@ -1,0 +1,11 @@
+---
+
+__apache_user: www-data
+__apache_group: www-data
+__apache_service_name: apache2
+
+# Software to be installed
+__dependent_packages:
+  - git
+  - bind9
+  - isc-dhcp-server

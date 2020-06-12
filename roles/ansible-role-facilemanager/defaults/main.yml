@@ -1,0 +1,16 @@
+---
+# defaults file for ansible-role-facilemanager
+
+# You can choose the facilemanager version
+# v3.5.2-complete
+# facileManager-complete-3.4.1
+# v3.4-complete
+# v3.3-complete
+# v3.2-complete
+# v3.1-complete
+# v3.0.3-complete
+# v3.0.1-complete
+# v3.0-complete
+# v2.3.3-complete
+
+facileManager_version: v3.5.2-complete

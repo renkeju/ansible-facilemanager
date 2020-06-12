@@ -1,0 +1,13 @@
+---
+
+- src: git+https://github.com/renkeju/ansible-role-apache.git
+  version: master
+
+- src: git+https://github.com/renkeju/ansible-role-mariadb.git
+  version: master
+
+- src: git+https://github.com/renkeju/ansible-role-php.git
+  version: master
+
+- src: git+https://github.com/renkeju/ansible-role-php-mysql.git
+  version: master

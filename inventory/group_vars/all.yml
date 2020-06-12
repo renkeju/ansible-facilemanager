@@ -1,0 +1,57 @@
+---
+
+apache_listen_interface: eth0
+apache_listen_ip: "{{ hostvars[inventory_hostname]['ansible_' + apache_listen_interface]['ipv4']['address'] }}"
+
+apache_create_vhosts: true
+apache_vhosts_filename: "vhosts.conf"
+apache_vhosts_template: "vhosts.conf.j2"
+
+apache_global_vhost_settings: |
+  DirectoryIndex index.php index.html
+apache_vhosts:
+  # Additional properties:
+  # 'serveradmin, serveralias, allow_override, options, extra_parameters'.
+  - servername: "k3s-haproxy-10-104-100-170.cobbler.lan"
+    documentroot: "/var/www/html/facileManager"
+
+apache_allow_override: "All"
+apache_options: "-Indexes +FollowSymLinks"
+
+# Only used on Debian/Ubuntu.
+apache_mods_enabled:
+  - rewrite.load
+apache_mods_disabled: 
+  - ssl.load
+
+# Set initial apache state. Recommended values: `started` or `stopped`
+apache_state: started
+
+# Set apache state when configuration changes are made. Recommended values:
+# `restarted` or `reloaded`
+apache_restart_state: restarted
+
+# Apache package state; use `present` to make sure it's installed, or `latest`
+# if you want to upgrade or switch versions using a new repo.
+apache_packages_state: present
+
+# Extra packages to install (in addition to distro-specific default lists).
+php_packages_extra:
+  - libapache2-mod-php
+
+# Default PHP version to install on Debian-based OSes.
+php_default_version_debian: "7.2"
+
+# PHP-FPM configuration.
+php_enable_php_fpm: false
+
+# Mariadb database list. Default is empty, no databases will be created.
+mariadb_databases:
+  - name: facileManager
+    encoding: utf8
+
+# Mariadb user list. Default is empty, no users will be created.
+mariadb_users:
+  - name: facileManager
+    password: facileManagerPassword!
+    priv: 'facileManager.*:GRANT,ALL'
