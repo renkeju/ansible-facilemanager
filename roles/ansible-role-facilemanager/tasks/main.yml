@@ -31,3 +31,12 @@
     remote_src: yes
     force: no
 
+- name: Validate the sudoers file before saving
+  lineinfile:
+    path: /etc/sudoers
+    create: yes
+    line: "{{ item }}"
+    validate: /usr/sbin/visudo -cf %s
+  with_items:
+    - "{{ __apache_user }} ALL=(root) NOPASSWD: /usr/sbin/named-checkconf, /usr/sbin/named-checkzone"
+    - "{{ __apache_user }} ALL=(root) NOPASSWD: /usr/sbin/dhcpd -t -cf *"
