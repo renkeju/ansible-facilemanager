@@ -18,7 +18,7 @@
 - name: Copy the facileManager server directory
   copy:
     src: /opt/facileManager/server/
-    dest: "/var/www/html/facileManager"
+    dest: "/var/www/html/facilemanager"
     owner: "{{ __apache_user }}"
     group: "{{ __apache_group }}"
     remote_src: yes
